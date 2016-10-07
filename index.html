@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+	<script type="text/javascript" src="processing.min.js"></script>
+	<script type="text/javascript">
+	 function run(){
+	     let script = document.getElementById('script');
+	     let code = document.getElementById('code');
+	     script.text = code.value;
+	     Processing.reload();
+	 }
+	</script>
+    </head>
+    <body>
+	<textarea id="code"></textarea>
+	<script type="text/processing" id="script">
+	 background(0,100,0);
+	 console.log('done');
+	</script>
+	<canvas id="canvas"></canvas>
+	<button onClick="run()">Run</button>
+    </body>
+</html>
