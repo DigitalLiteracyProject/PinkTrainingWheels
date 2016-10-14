@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+	<script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+	<script type="text/javascript" src="block2.js"></script>
 	<script type="text/javascript" src="processing.min.js"></script>
 	<script type="text/javascript">
 	 function run(){
@@ -12,6 +15,7 @@
 	</script>
     </head>
     <body>
+	<div id="react-base"></div>
 	<textarea id="code"></textarea>
 	<script type="text/processing" id="script">
 	 background(0,100,0);
@@ -19,5 +23,8 @@
 	</script>
 	<canvas id="canvas"></canvas>
 	<button onClick="run()">Run</button>
+	<script type="text/javascript">
+	 ReactDOM.render(React.createElement(Block, null), document.getElementById('react-base'));
+	</script>
     </body>
 </html>
