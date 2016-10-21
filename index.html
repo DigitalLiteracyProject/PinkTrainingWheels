@@ -3,12 +3,17 @@
     <head>
 	<script type="text/javascript" src="processing.min.js"></script>
 	<script type="text/javascript">
+        const script = document.getElementById('script');
+        const code = document.getElementById('code');
+        const newCode = document.getElementById('newCode');
 	 function run(){
-	     const script = document.getElementById('script');
-	     const code = document.getElementById('code');
 	     script.text = code.value;
 	     Processing.reload();
 	 }
+        function newText (){
+            console.log(newCode);
+            //code.value = newCode.innerHTML;
+        }
 	</script>
     </head>
     <body>
@@ -19,5 +24,6 @@
 	</script>
 	<canvas id="canvas"></canvas>
 	<button onClick="run()">Run</button>
+        <button onClick="newText()" id="newCode">background(white)</button>
     </body>
 </html>
