@@ -3,27 +3,45 @@
     <head>
 	<script type="text/javascript" src="processing.min.js"></script>
 	<script type="text/javascript">
+    var lines = 0;
+    document.onload = function(){
         const script = document.getElementById('script');
         const code = document.getElementById('code');
         const newCode = document.getElementById('newCode');
+    }
 	 function run(){
 	     script.text = code.value;
 	     Processing.reload();
 	 }
-        function newText (){
-            console.log(newCode);
-            //code.value = newCode.innerHTML;
+        function newText (newCode){
+            if (lines != 0)
+            {
+                code.value = code.value + '\n' + newCode;
+                lines++;
+            }
+            else
+            {
+                code.value = newCode;
+                lines++;
+            }
         }
 	</script>
     </head>
     <body>
-	<textarea id="code"></textarea>
-	<script type="text/processing" id="script">
+    <div style="width: 300px;">
+    <div style="width: 200px">
+	<textarea id="code" rows="4" cols="50"></textarea>
+    <button onClick="run()">Run</button>
+    </div>
+    <div id="buttons" align="right" style="width: 100px; height: 100px;">
+        <button onClick="newText(this.innerHTML)" id="button1">background(255, 204, 0);</button>
+        <button onClick="newText(this.innerHTML)" id="button2">rect(30, 20, 55, 55);</button>
+        </div>
+    </div>
+        	<script type="text/processing" id="script">
 	 background(0,100,0);
 	 console.log('done');
 	</script>
-	<canvas id="canvas"></canvas>
-	<button onClick="run()">Run</button>
-        <button onClick="newText()" id="newCode">background(white)</button>
+	<canvas id="canvas" style="text-align:center; display: inline; width 100px;"></canvas>
     </body>
 </html>
