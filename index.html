@@ -8,6 +8,7 @@
         const script = document.getElementById('script');
         const code = document.getElementById('code');
         const newCode = document.getElementById('newCode');
+        lines = 0;
     }
 	 function run(){
 	     script.text = code.value;
@@ -17,13 +18,12 @@
             if (lines != 0)
             {
                 code.value = code.value + '\n' + newCode;
-                lines++;
             }
             else
             {
                 code.value = newCode;
-                lines++;
             }
+            lines++;
         }
 	</script>
     </head>
