@@ -1,36 +1,47 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-	<script type="text/javascript" src="processing.min.js"></script>
-	<script type="text/javascript">
-    var lines = 0;
+    <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script type="text/javascript" src="processing.min.js"></script>
+            	<script type="text/javascript">
+    // sets variables using ids parts of page
     document.onload = function(){
         const script = document.getElementById('script');
-        const code = document.getElementById('code');
-        const newCode = document.getElementById('newCode');
-        lines = 0;
+        const textarea = document.getElementById('textarea');
+        //lines = 0;
+        
+        // attempt to avoid onclick function, not currently functional
+        var buttons = document.getElementsByTagName('button'),
+            buttonsCount = buttons.length;
+        console.log("hello")
+        for (var i = 0; i <= buttonsCount; i += 1) {
+            buttons[i].onclick = function(e) {
+            console.log("clicked");
+            };
+        }
     }
 	 function run(){
-	     script.text = code.value;
+	     script.text = textarea.value;
 	     Processing.reload();
 	 }
+        // appends html from button into text area, followed by new line
         function newText (newCode){
-            if (lines != 0)
-            {
-                code.value = code.value + '\n' + newCode;
-            }
-            else
-            {
-                code.value = newCode;
-            }
-            lines++;
+                textarea.value = textarea.value + newCode + '\n';
+            
+            // attempt at react (not functional)
+                /*ReactDOM.render(
+  <h1>Hello, world!</h1>,
+  document.getElementById('root')
+);*/
         }
 	</script>
     </head>
     <body>
+    <main id='root'></main>
     <div style="width: 300px;">
     <div style="width: 200px">
-	<textarea id="code" rows="4" cols="50"></textarea>
+	<textarea id="textarea" rows="4" cols="50"></textarea>
     <button onClick="run()">Run</button>
     </div>
     <div id="buttons" align="right" style="width: 100px; height: 100px;">
