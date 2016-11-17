@@ -24,9 +24,7 @@ MVP:
         
         -cursor then moves to parameters to motivate completion
         
-        -appropriate wrapping of elements
-        
-        -lines of code are colored according to type, matching colors from menu
+        -appropriate nesting of elements
         
     Canvas:
     
@@ -39,3 +37,5 @@ MVP:
     -moving from buttons to drag and drop
     
     -distinguishing between parameters which should be edited and keywords which should not
+    
+    -lines of code are colored according to type, matching colors from menu

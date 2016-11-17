@@ -3,56 +3,60 @@
     <head>
     <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script type="text/javascript" src="button.js"></script>
+    <script type="text/javascript" src="app.js"></script>
     <script type="text/javascript" src="processing.min.js"></script>
-            	<script type="text/javascript">
+    <script type="text/javascript">
     // sets variables using ids parts of page
-    document.onload = function(){
+    window.onload = function(){
         const script = document.getElementById('script');
         const textarea = document.getElementById('textarea');
-        //lines = 0;
-        
-        // attempt to avoid onclick function, not currently functional
         var buttons = document.getElementsByTagName('button'),
             buttonsCount = buttons.length;
         console.log("hello")
-        for (var i = 0; i <= buttonsCount; i += 1) {
-            buttons[i].onclick = function(e) {
-            console.log("clicked");
-            };
-        }
+        ReactDOM.render(React.createElement(App, {addText: newText}),
+                        document.getElementById('root'));
+        
+        // see app.js for attempt to create element using class
+        
+        /*ReactDOM.render(React.createElement(CodeEditor),
+  document.getElementById('example'))*/
+        
+        // create the textarea 
+        ReactDOM.render(
+  React.createElement('textarea', null, 'Code will go here'),
+  document.getElementById('codeEditor')
+);
+        ReactDOM.render(
+  React.createElement('canvas', null),
+  document.getElementById('canvas')
+);
+   
     }
 	 function run(){
 	     script.text = textarea.value;
 	     Processing.reload();
 	 }
         // appends html from button into text area, followed by new line
-        function newText (newCode){
-                textarea.value = textarea.value + newCode + '\n';
-            
-            // attempt at react (not functional)
-                /*ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);*/
-        }
+    function newText (newCode){
+        textarea.value = textarea.value + newCode + '\n';
+    }
 	</script>
     </head>
     <body>
     <main id='root'></main>
     <div style="width: 300px;">
-    <div style="width: 200px">
-	<textarea id="textarea" rows="4" cols="50"></textarea>
-    <button onClick="run()">Run</button>
-    </div>
-    <div id="buttons" align="right" style="width: 100px; height: 100px;">
-        <button onClick="newText(this.innerHTML)" id="button1">background(255, 204, 0);</button>
-        <button onClick="newText(this.innerHTML)" id="button2">rect(30, 20, 55, 55);</button>
+        <div style="width: 200px">
+	        <textarea id="textarea" rows="4" cols="50"></textarea>
+            <button onClick="run()">Run</button>
         </div>
+        <div id="codeEditor"></div>
     </div>
         	<script type="text/processing" id="script">
 	 background(0,100,0);
 	 console.log('done');
 	</script>
 	<canvas id="canvas" style="text-align:center; display: inline; width 100px;"></canvas>
+    <div id="canvas"></div>
     </body>
 </html>
