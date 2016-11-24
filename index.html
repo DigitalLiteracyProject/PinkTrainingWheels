@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+    <link rel="stylesheet" type="text/css" href="wheels.css">
     <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
     <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
     <script type="text/javascript" src="button.js"></script>
     <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="editor.js"></script>
     <script type="text/javascript" src="processing.min.js"></script>
     <script type="text/javascript">
     // sets variables using ids parts of page
@@ -13,24 +15,12 @@
         const textarea = document.getElementById('textarea');
         var buttons = document.getElementsByTagName('button'),
             buttonsCount = buttons.length;
-        console.log("hello")
         ReactDOM.render(React.createElement(App, {addText: newText}),
                         document.getElementById('root'));
         
-        // see app.js for attempt to create element using class
-        
-        /*ReactDOM.render(React.createElement(CodeEditor),
-  document.getElementById('example'))*/
-        
         // create the textarea 
-        ReactDOM.render(
-  React.createElement('textarea', null, 'Code will go here'),
-  document.getElementById('codeEditor')
-);
-        ReactDOM.render(
-  React.createElement('canvas', null),
-  document.getElementById('canvas')
-);
+        ReactDOM.render(React.createElement(Editor, null),
+                        document.getElementById('codeEditor'));
    
     }
 	 function run(){
@@ -44,6 +34,7 @@
 	</script>
     </head>
     <body>
+    <section>
     <main id='root'></main>
     <div style="width: 300px;">
         <div style="width: 200px">
@@ -58,5 +49,6 @@
 	</script>
 	<canvas id="canvas" style="text-align:center; display: inline; width 100px;"></canvas>
     <div id="canvas"></div>
+    </section>
     </body>
 </html>
