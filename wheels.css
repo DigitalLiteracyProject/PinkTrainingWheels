@@ -1,0 +1,15 @@
+.App {
+    float: right;
+}
+
+section {
+    width: 500px;
+    height: 200px;
+    background: gray;
+    margin: auto;
+    padding: 10px;
+    float: left;
+}
+canvas {
+    float: center;
+}
